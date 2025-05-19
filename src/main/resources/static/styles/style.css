@@ -1,0 +1,113 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  background-color: #1e1e1e;
+  color: white;
+}
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+nav {
+  padding-top: 3rem;
+}
+footer {
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+.titles {
+  padding-top: 1rem;
+  font-weight: 900;
+}
+.login-form {
+  padding: 2rem;
+  border-radius: 8px;
+  width: 300px;
+  font-size: 20px;
+  font-weight: 600;
+}
+.login-form label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 0.9rem;
+}
+.login-form input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: #2a2a2a;
+  color: white;
+}
+.login-form button {
+  width: 100%;
+  padding: 0.6rem;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.login-form button:hover {
+  background: #0056b3;
+}
+main {
+  padding: 5rem;
+}
+p {
+  font-size: 20px;
+  text-align: center;
+}
+button {
+  padding: 0.6rem;
+  margin: 0.2rem;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+button:hover {
+  background: #0056b3;
+}
+.student-form {
+  padding: 2rem;
+  border-radius: 8px;
+  width: 300px;
+  font-size: 20px;
+  font-weight: 600;
+}
+.student-form label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 0.9rem;
+}
+.student-form input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: #2a2a2a;
+  color: white;
+}
+table {
+  padding-top: 1rem;
+}
+td {
+  width: 15rem;
+  height: 1vh;
+  border: 1px solid white;
+  border-radius: 4px;
+  background-color: #2a2a2a;
+  text-align:center;
+}

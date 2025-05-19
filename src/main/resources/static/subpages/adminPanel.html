@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Studencka Baza Danych</title>
+    <!--Czcionka-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!--Czcionka-->
+    <link rel="stylesheet" href="../styles/reset.css" />
+    <link rel="stylesheet" href="../styles/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1 class="titles">PANEL ADMINISTATORA BAZY DANYCH STUDENTÓW</h1>
+      <h3>
+        Zarządzaj danymi studentów w wygodnej aplikacji webowej! Dodawaj,
+        wyszukuj, sortuj i usuwaj rekordy.
+      </h3>
+    </header>
+    <nav>
+      <ul>
+        <form action="/logout" method="post" style="display: inline">
+          <button type="submit">Wyloguj</button>
+        </form>
+      </ul>
+    </nav>
+    <main>
+      <h2>Dodawanie Studenta</h2>
+      <form class="student-form" action="/students" method="post" id="add-student-form">
+        <label>Imię</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Twoje imię"
+          required
+        />
+        <label>Nazwisko</label>
+        <input
+          type="text"
+          id="lastName"
+          name="lastName"
+          placeholder="Twoje nazwisko"
+          required
+        />
+        <label>Adres</label>
+        <input
+          type="text"
+          id="address"
+          name="address"
+          placeholder="Twój adres"
+          required
+        />
+        <label>Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Twój adres email"
+          required
+        />
+        <label>Email</label>
+        <input
+          type="text"
+          id="telephone"
+          name="telephone"
+          placeholder="Twój telefon +48"
+          required
+        />
+        <button type="submit">Wyślij Dane</button>
+      </form>
+      <h2>Lista Studentów</h2>
+      <table>
+        <thead>
+        <tr>
+          <th>Imię</th>
+          <th>Nazwisko</th>
+          <th>Adres</th>
+          <th>Email</th>
+          <th>Telefon</th>
+        </tr>
+        </thead>
+        <tbody id="student-table-body"></tbody>
+      </table>
+      <script>
+        const form = document.getElementById("add-student-form");
+        const tableBody = document.getElementById("student-table-body");
+
+        // Obsługa dodawania studenta
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          const formData = new FormData(form);
+          const student = Object.fromEntries(formData.entries());
+
+          fetch("/api/students", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(student),
+          })
+            .then((res) => res.json())
+            .then(() => {
+              form.reset();
+              loadStudents();
+            })
+            .catch(() => alert("Błąd podczas dodawania studenta"));
+        });
+
+        // Wczytywanie studentów do tabeli
+        function loadStudents() {
+          fetch("/api/students")
+            .then((res) => res.json())
+            .then((data) => {
+              tableBody.innerHTML = "";
+              data.forEach((student) => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                  <td>${student.name}</td>
+                  <td>${student.lastName}</td>
+                  <td>${student.address}</td>
+                  <td>${student.email}</td>
+                  <td>${student.telephone}</td>
+
+                    <button class="delete-button" onclick="deleteStudent(${student.id})">Usuń</button>
+
+                `;
+                tableBody.appendChild(row);
+              });
+            });
+        }
+
+        // Usuwanie studenta po ID
+        function deleteStudent(id) {
+          if (!confirm("Na pewno chcesz usunąć tego studenta?")) return;
+
+          fetch(`/api/students/${id}`, {
+            method: "DELETE",
+          })
+            .then((res) => {
+              if (res.ok) {
+                loadStudents();
+              } else {
+                alert("Błąd podczas usuwania studenta.");
+              }
+            });
+        }
+
+        // Wczytanie danych przy starcie
+        window.addEventListener("DOMContentLoaded", loadStudents);
+      </script>
+    </main>
+    <footer></footer>
+  </body>
+</html>

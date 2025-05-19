@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Studencka Baza Danych</title>
+    <!--Czcionka-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!--Czcionka-->
+    <link rel="stylesheet" href="./styles/reset.css" />
+    <link rel="stylesheet" href="./styles/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1 class="titles">PANEL ADMISTARORA</h1>
+      <p>
+        Witamy w panelu administracyjnym naszej strony internetowej. Prosze się
+        najpierw zalogować!<br />Domyślny login to admin i hasło również.
+      </p>
+    </header>
+    <main class="main-form">
+      <section>
+        <form class="login-form" action="/login" method="post">
+          <label for="username">Login</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Twój login"
+            required
+            autofocus
+          />
+          <label for="password">Hasło</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Twoje hasło"
+            required
+          />
+          <button type="submit">Zaloguj się</button>
+        </form>
+        <script>
+          const params = new URLSearchParams(window.location.search);
+          if (params.get("error") === "true") {
+            document.write("<p style='color:red'>Błędny login lub hasło</p>");
+          }
+        </script>
+      </section>
+    </main>
+  </body>
+</html>
