@@ -18,6 +18,6 @@ Technologie
 - Java 21
 - Spring Boot
 - Spring Data JPA
-- H2 / MySQL (do wyboru)
+- H2 Databases
 - HTML, CSS, JavaScript
 - Gradle
