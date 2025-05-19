@@ -13,14 +13,12 @@ public class DataInitializer {
             StudentRepository studentRepository
     ) {
         return args -> {
-            // Tworzenie domyślnego użytkownika
             if (userRepository.findByUsername("admin") == null) {
                 User admin = new User(null, "admin", "admin");
                 userRepository.save(admin);
                 System.out.println("Utworzono użytkownika admin/admin");
             }
 
-            // Tworzenie domyślnych studentów
             if (studentRepository.count() == 0) {
                 studentRepository.save(new Student("Jan", "Kowalski", "ul. Lipowa 12", "jan.kowalski@example.com", "+48 123 456 789"));
                 studentRepository.save(new Student("Anna", "Nowak", "ul. Kwiatowa 5", "anna.nowak@example.com", "+48 987 654 321"));
