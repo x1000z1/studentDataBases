@@ -21,3 +21,4 @@ Technologie
 - H2 Databases
 - HTML, CSS, JavaScript
 - Gradle
+![image](https://github.com/user-attachments/assets/aa860d78-7e9d-48cb-ab79-2377e26e4d17)
