@@ -24,6 +24,6 @@ Aplikacja webowa do zarządzania studentami z panelem logowania administratora. 
 
 ### Wygląd strony
 
-![image](https://github.com/user-attachments/assets/aa860d78-7e9d-48cb-ab79-2377e26e4d17)
+![image](https://github.com/user-attachments/assets/18e1b091-f43b-4e82-8ee0-4927eb226b83)
 
-![image](https://github.com/user-attachments/assets/f3b86bf6-5723-4192-9777-6d794623fca7)
+![image](https://github.com/user-attachments/assets/ecedd962-13ee-44bd-b188-a5de7ff685a5)
